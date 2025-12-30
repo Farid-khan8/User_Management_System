@@ -1,0 +1,15 @@
+.auth-card {
+    width: 460px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 380px;
+}
+
+@media (max-width: 576px) {
+    .auth-card {
+        margin: 0 10px;
+    }
+}

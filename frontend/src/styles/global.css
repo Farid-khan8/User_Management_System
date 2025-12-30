@@ -1,0 +1,26 @@
+body {
+    background-color: #f4f6f9;
+}
+
+a {
+    text-decoration: none;
+}
+
+.page-center {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Prevent horizontal scroll on mobile */
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Improve tap targets on mobile */
+button {
+    min-height: 38px;
+}

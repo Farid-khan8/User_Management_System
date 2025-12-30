@@ -1,0 +1,11 @@
+first user login:
+email:test@test.com
+password: Test@123
+
+second user login:
+email:test1@test.com
+password: Second@123
+
+Admin Login:
+email: admin@test.com
+Password: Admin@123
