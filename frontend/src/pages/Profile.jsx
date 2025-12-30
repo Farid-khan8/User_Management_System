@@ -20,7 +20,8 @@ export default function Profile() {
                 email: res.data.email,
             };
             setProfile(data);
-            setOriginalProfile(data); // 🔐 store original
+            setOriginalProfile(data);
+            //  store original
         });
     }, []);
 
@@ -38,7 +39,7 @@ export default function Profile() {
     };
 
     const cancelProfileUpdate = () => {
-        setProfile(originalProfile); // 🔁 revert changes
+        setProfile(originalProfile);
         showToast("Changes discarded", "info");
     };
 
