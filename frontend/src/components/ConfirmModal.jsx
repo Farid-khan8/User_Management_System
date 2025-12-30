@@ -1,3 +1,4 @@
+//confirm modal component
 export default function ConfirmModal({
     title = "Are you sure?",
     message = "This action cannot be undone.",
