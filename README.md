@@ -252,7 +252,7 @@ Frontend Deployment
 
 ## 📡 API Documentation
 
-## 🛡 ADMIN APIs TESTING
+## 🛡 USER APIs TESTING
 
 ### 1- Signup API
 
