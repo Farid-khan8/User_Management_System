@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useCallback } from "react";
 import { toastEmitter } from "../utils/toastEmitter";
 
 export const ToastContext = createContext();
@@ -6,30 +6,39 @@ export const ToastContext = createContext();
 export function ToastProvider({ children }) {
     const [toasts, setToasts] = useState([]);
 
-    // manual toast trigger
-    const showToast = (message, type = "success") => {
-        const id = Date.now();
-        setToasts((prev) => [...prev, { id, message, type }]);
+    // Centralized toast function
+    const showToast = useCallback(
+        (message, type = "success", duration = 3000) => {
+            const id = Date.now();
 
-        setTimeout(() => {
-            setToasts((prev) => prev.filter((t) => t.id !== id));
-        }, 3000);
-    };
+            setToasts((prev) => [...prev, { id, message, type }]);
 
-    // auto toast listener (optional, but safe)
+            // Auto-dismiss toast
+            setTimeout(() => {
+                setToasts((prev) => prev.filter((t) => t.id !== id));
+            }, duration);
+        },
+        []
+    );
+
+    // Listen to global toastEmitter events
     useEffect(() => {
         if (!toastEmitter) return;
 
-        const handler = (type, message) => {
-            showToast(message, type);
+        const successHandler = (msg) => showToast(msg, "success");
+        const errorHandler = (msg) => showToast(msg, "error");
+        const infoHandler = (msg) => showToast(msg, "info");
+
+        toastEmitter.on("success", successHandler);
+        toastEmitter.on("error", errorHandler);
+        toastEmitter.on("info", infoHandler);
+
+        return () => {
+            toastEmitter.off("success", successHandler);
+            toastEmitter.off("error", errorHandler);
+            toastEmitter.off("info", infoHandler);
         };
-
-        toastEmitter.on("success", (msg) => handler("success", msg));
-        toastEmitter.on("error", (msg) => handler("error", msg));
-        toastEmitter.on("info", (msg) => handler("info", msg));
-
-        return () => toastEmitter.all.clear();
-    }, []);
+    }, [showToast]);
 
     return (
         <ToastContext.Provider value={{ showToast, toasts }}>
