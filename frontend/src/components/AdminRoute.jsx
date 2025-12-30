@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
+//protect admin routes
 export default function AdminRoute({ children }) {
     const { user, loading } = useContext(AuthContext);
 
