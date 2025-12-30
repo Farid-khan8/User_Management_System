@@ -218,3 +218,36 @@ To run backend tests:
 cd backend
 npm test
 ```
+
+## 🔐 Environment Variables
+
+Backend (/backend/.env)
+
+```bash
+Variable             Description
+
+PORT                 Port number for backend server
+MONGO_URI            MongoDB connection string
+JWT_SECRET           Secret key used to sign JWT tokens
+
+```
+
+## 🚀 Deployment Instructions
+
+-   Platform: Render / Railway / AWS / Cyclic
+-   • Steps:
+-   1.  Push backend code to GitHub
+-   2.  Create new backend service on hosting platform
+-   3.  Set environment variables (MONGO_URI, JWT_SECRET)
+-   4.  Deploy and obtain production API URL
+
+Frontend Deployment
+
+-   • Platform: Vercel / Netlify
+-   • Steps:
+-   1. Push frontend code to GitHub
+-   2. Import repository into Vercel/Netlify
+-   3. Set API base URL if required
+-   4. Deploy frontend
+
+## 📡 API Documentation
