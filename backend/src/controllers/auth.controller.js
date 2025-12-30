@@ -14,6 +14,7 @@ const isStrongPassword = (password) => {
     );
 };
 
+//Signup controller
 exports.signup = async (req, res) => {
     try {
         const { fullName, email, password, role } = req.body;
@@ -78,6 +79,7 @@ exports.signup = async (req, res) => {
     }
 };
 
+// Login controller
 exports.login = async (req, res) => {
     const { email, password } = req.body;
 
