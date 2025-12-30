@@ -455,3 +455,11 @@ Response
   "message": "User activated"
 }
 ```
+
+## Backend Deployed Render Link:
+
+https://user-management-system-backend-uzly.onrender.com
+
+## Frontend Deployed Vercel Link:
+
+https://user-management-system-vert.vercel.app/login
