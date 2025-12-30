@@ -6,7 +6,7 @@ export const ToastContext = createContext();
 export function ToastProvider({ children }) {
     const [toasts, setToasts] = useState([]);
 
-    // 🔔 manual toast trigger
+    // manual toast trigger
     const showToast = (message, type = "success") => {
         const id = Date.now();
         setToasts((prev) => [...prev, { id, message, type }]);
@@ -16,7 +16,7 @@ export function ToastProvider({ children }) {
         }, 3000);
     };
 
-    // 🔥 auto toast listener (optional, but safe)
+    // auto toast listener (optional, but safe)
     useEffect(() => {
         if (!toastEmitter) return;
 
